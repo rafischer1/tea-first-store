@@ -2,10 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './menu-item.styles.scss';
 
-const MenuItem = ({ title, imageUrl, size }) => {
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
   let navigate = useNavigate();
   const handleClick = () => {
-    navigate(`/${title.split(' ')[0].toLowerCase()}`);
+    navigate(`/${linkUrl}`);
   };
 
   return (

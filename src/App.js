@@ -8,11 +8,11 @@ function App() {
     <div className='App'>
       <Routes>
         <Route exact path='/' element={<HomePage />} />
-        <Route path='applesauce' element={<HomePage />} />
-        <Route path='selbyville' element={<HomePage />} />
-        <Route path='dracula' element={<HomePage />} />
-        <Route path='merch' element={<HomePage />} />
-        <Route path='releases' element={<HomePage />} />
+        <Route path='shop/applesauce' element={<HomePage />} />
+        <Route path='shop/selbyville' element={<HomePage />} />
+        <Route path='shop/dracula' element={<HomePage />} />
+        <Route path='shop/merch' element={<HomePage />} />
+        <Route path='shop/releases' element={<HomePage />} />
       </Routes>
     </div>
   );
