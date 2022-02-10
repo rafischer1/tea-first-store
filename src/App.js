@@ -15,7 +15,7 @@ function App() {
         <Route path='shop/applesauce' element={<Shop />} />
         <Route path='shop/selbyville' element={<Shop />} />
         <Route path='shop/dracula' element={<Shop />} />
-        <Route path='shop/merch' element={<Shop />} />
+        <Route path='shop/photos' element={<Shop />} />
         <Route path='shop/releases' element={<Shop />} />
       </Routes>
     </div>

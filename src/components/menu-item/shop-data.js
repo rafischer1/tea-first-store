@@ -104,6 +104,13 @@ const SHOP_DATA = [
         name: 'Dracula Songs III (Cassette) (COMING SOON)',
         imageUrl: ' https://f4.bcbits.com/img/a3924038074_16.jpg',
         price: 5
+      },
+      {
+        id: 4,
+        name: 'Tea First Compilation',
+        imageUrl:
+          'https://64.media.tumblr.com/tumblr_lle93zg8v21qk629no1_400.jpg',
+        price: 8
       }
     ]
   },
@@ -123,7 +130,7 @@ const SHOP_DATA = [
         id: 2,
         name: 'Graham/Drab Pony (Casette)',
         imageUrl:
-          'https://4.bp.blogspot.com/-Yk7r15OfHDg/T9YE02a7nxI/AAAAAAAAAFc/toEpRXJ5oag/s200/grahamdrabponysmall.jpg',
+          'https://64.media.tumblr.com/tumblr_lrgxxjrivU1qk629no1_1280.jpg',
         price: 5
       },
       {
@@ -141,50 +148,56 @@ const SHOP_DATA = [
         price: 80
       }
     ]
+  },
+  {
+    id: 5,
+    title: 'Photos',
+    routeName: 'photos',
+    items: [
+      {
+        id: 1,
+        name: 'Mural Lisbon',
+        imageUrl:
+          'https://64.media.tumblr.com/b58e2bd78cdb7cf0282295caefc5c88c/tumblr_p2k9j6wJQY1qk629no2_1280.jpg',
+        price: 105
+      },
+      {
+        id: 2,
+        name: 'Rock (Maine)',
+        imageUrl:
+          'https://64.media.tumblr.com/7b4c8a354c542b467dc621684a6699e2/tumblr_oiywetdmwh1qk629no1_1280.jpg',
+        price: 85
+      },
+      {
+        id: 3,
+        name: 'Sheep (Westfjords, Iceland)',
+        imageUrl:
+          'https://64.media.tumblr.com/1e223d3d4547cd9e14dd2096c5182380/tumblr_oe852evN7a1qk629no1_1280.jpg',
+        price: 75
+      },
+      {
+        id: 4,
+        name: 'Port Charlotte Cemetery, Islay, Scotland',
+        imageUrl:
+          'https://64.media.tumblr.com/8a0276ca9f7a1159b6782b7d0ab0758f/tumblr_o4lylpeo4D1qk629no1_1280.jpg',
+        price: 210
+      },
+      {
+        id: 5,
+        name: 'Scarborough Salt March (Maine)',
+        imageUrl:
+          'https://64.media.tumblr.com/df57b153db2bb2c203a2bb548b125dac/tumblr_nvtp1hHggv1qk629no1_1280.jpg',
+        price: 60
+      },
+      {
+        id: 6,
+        name: 'Hillsboro Inlet (Florida)',
+        imageUrl:
+          'https://64.media.tumblr.com/59c5b39360339805dd9994864c2446b3/tumblr_nl6oaiqrb61qk629no1_1280.jpg',
+        price: 30
+      }
+    ]
   }
-  // {
-  //   id: 5,
-  //   title: 'Random',
-  //   routeName: 'random',
-  //   items: [
-  //     {
-  //       id: 1,
-  //       name: 'Camo Down Vest',
-  //       imageUrl: 'https://i.ibb.co/xJS0T3Y/camo-vest.png',
-  //       price: 325
-  //     },
-  //     {
-  //       id: 2,
-  //       name: 'Floral T-shirt',
-  //       imageUrl: 'https://i.ibb.co/qMQ75QZ/floral-shirt.png',
-  //       price: 20
-  //     },
-  //     {
-  //       id: 3,
-  //       name: 'Black & White Longsleeve',
-  //       imageUrl: 'https://i.ibb.co/55z32tw/long-sleeve.png',
-  //       price: 25
-  //     },
-  //     {
-  //       id: 4,
-  //       name: 'Pink T-shirt',
-  //       imageUrl: 'https://i.ibb.co/RvwnBL8/pink-shirt.png',
-  //       price: 25
-  //     },
-  //     {
-  //       id: 5,
-  //       name: 'Jean Long Sleeve',
-  //       imageUrl: 'https://i.ibb.co/VpW4x5t/roll-up-jean-shirt.png',
-  //       price: 40
-  //     },
-  //     {
-  //       id: 6,
-  //       name: 'Burgundy T-shirt',
-  //       imageUrl: 'https://i.ibb.co/mh3VM1f/polka-dot-shirt.png',
-  //       price: 25
-  //     }
-  //   ]
-  // }
 ];
 
 export default SHOP_DATA;

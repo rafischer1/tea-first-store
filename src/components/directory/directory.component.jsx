@@ -38,12 +38,12 @@ export default class Directory extends React.Component {
           linkUrl: 'shop/releases'
         },
         {
-          title: 'merch',
+          title: 'photos',
           imageUrl:
-            'https://4.bp.blogspot.com/-fcjJRo_mFFM/Wgd5NIxUZNI/AAAAAAAADB0/3oHOweZOk2watC3LuX5nnOKzN_lT1dffQCLcBGAs/s640/Myrdallsjokul%2BIceland%2B.jpg',
+            'https://64.media.tumblr.com/846b6e397af9f56e6efc3917d9f46c08/tumblr_ni2vs1In2C1qk629no1_1280.jpg',
           size: 'large',
           id: 5,
-          linkUrl: 'shop/merch'
+          linkUrl: 'shop/photos'
         }
       ]
     };
