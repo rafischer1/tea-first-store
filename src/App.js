@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './pages/homepage/homepage.component';
 import Shop from './pages/shop/shop.component';
 import Header from './components/header/header.component';
+import SignInAndSignUp from './pages/sign-in/sign-in-and-sign-up.component';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='shop/dracula' element={<Shop />} />
         <Route path='shop/photos' element={<Shop />} />
         <Route path='shop/releases' element={<Shop />} />
+        <Route path='signin' element={<SignInAndSignUp />} />
       </Routes>
     </div>
   );
