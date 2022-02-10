@@ -90,7 +90,7 @@ const SHOP_DATA = [
         name: 'Dracula Songs (Cassette)',
         imageUrl:
           'https://1.bp.blogspot.com/_-F5oRQdMYYQ/TOLsswn_fbI/AAAAAAAAAA4/s06GB4IU6rE/s200/draculasongscover.jpg',
-        price: 125
+        price: 5
       },
       {
         id: 2,
