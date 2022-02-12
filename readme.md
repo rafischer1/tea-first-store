@@ -2,6 +2,8 @@
 
 [Images Available](https://peacefang.tumblr.com/)
 
+---
+
 FIREBASE BACKWARDS COMPAT FOR IMPORT ERROR:
 
 ```go
@@ -17,3 +19,7 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 ```
+
+---
+
+[Redux Logger](https://www.npmjs.com/package/redux-logger)
