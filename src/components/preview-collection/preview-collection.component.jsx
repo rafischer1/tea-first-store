@@ -1,14 +1,14 @@
-import React from 'react';
-import './preview-collection.styles.scss';
-import CollectionItem from '../collection-item/collection-item.component';
+import React from "react";
+import "./preview-collection.styles.scss";
+import CollectionItem from "../collection-item/collection-item.component";
 
 const PreviewCollection = ({ title, items, routeName }) => (
-  <div className='preview-collection'>
-    <h1 className='title'>{title}</h1>
-    <div className='preview'>
+  <div className="preview-collection">
+    <h1 className="title">{title}</h1>
+    <div className="preview">
       {items
         .filter((i, idx) => idx < 4)
-        .map(item => (
+        .map((item) => (
           <CollectionItem
             key={item.id}
             id={item.id}
