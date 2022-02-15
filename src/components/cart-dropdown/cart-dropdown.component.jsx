@@ -6,11 +6,15 @@ import CustomButton from "../custom-button/custom-button.component";
 import "./cart-dropdown.styles.scss";
 import CartItem from "../cart-item/cart-item.component";
 import { selectCartItems } from "../../redux/cart/cart.selectors";
+import { toggleCartDropdownAction } from "../../redux/cart/cart.actions";
 
-const CartDropdown = ({ cartItems }) => {
+const CartDropdown = ({ cartItems, dispatch }) => {
   let nav = useNavigate();
 
-  const goToCheckout = () => nav("/checkout");
+  const goToCheckout = () => {
+    nav("/checkout");
+    dispatch(toggleCartDropdownAction());
+  };
 
   return (
     <div className="cart-dropdown">
@@ -32,4 +36,5 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
 });
 
+// * passes dispatch into component as a prop without a second param here
 export default connect(mapStateToProps)(CartDropdown);
