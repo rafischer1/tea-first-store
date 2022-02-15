@@ -1,8 +1,29 @@
-# React Store Project
+# React Store Project - Tea First Records
+
+## Resources
 
 [Images Available](https://peacefang.tumblr.com/)
 
+## PACKAGE DOCS
+
+[Redux Logger](https://www.npmjs.com/package/redux-logger)
+
+[Reselect](https://www.npmjs.com/package/reselect)
+
 ---
+## NOTES
+
+mapStateToProps
+ 
+```css
+redux mapStateToProps has a shallow 
+equality check for every value in the object; 
+it won't replace values if they pass a shallow equality 
+check which means it won't needlessly re-render,
+but if we have transformation logic it's still valuable 
+to memoize it with a selector to save us running 
+duplicate logic to get the same output.
+```
 
 FIREBASE BACKWARDS COMPAT FOR IMPORT ERROR:
 
@@ -19,26 +40,3 @@ import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 ```
-
----
-## PACKAGE DOCS
-
-[Redux Logger](https://www.npmjs.com/package/redux-logger)
-
-[Reselect](https://www.npmjs.com/package/reselect)
-
----
-## NOTES
-
-Note on mapStateToProps:
- 
-```css
-redux mapStateToProps has a shallow 
-equality check for every value in the object; 
-it won't replace values if they pass a shallow equality 
-check which means it won't needlessly re-render,
-but if we have transformation logic it's still valuable 
-to memoize it with a selector to save us running 
-duplicate logic to get the same output.
-```
-
