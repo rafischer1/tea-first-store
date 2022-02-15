@@ -6,6 +6,10 @@
 
 ## PACKAGE DOCS
 
+[React](https://reactjs.org/docs/conditional-rendering.html)
+
+[React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
+
 [Redux Logger](https://www.npmjs.com/package/redux-logger)
 
 [Reselect](https://www.npmjs.com/package/reselect)
