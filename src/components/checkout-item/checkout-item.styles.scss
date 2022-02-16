@@ -24,10 +24,20 @@
 
   .quantity {
     padding-left: 20px;
+    display: flex;
+    flex-direction: row;
   }
 
   .remove-button {
     padding-left: 12px;
     cursor: pointer;
   }
+}
+
+.arrow {
+  cursor: pointer;
+}
+
+.value {
+  margin: 0 10px;
 }
