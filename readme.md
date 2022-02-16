@@ -14,6 +14,8 @@
 
 [Reselect](https://www.npmjs.com/package/reselect)
 
+[Dingbats](https://www.w3schools.com/charsets/ref_utf_dingbats.asp)
+
 ---
 ## NOTES
 
