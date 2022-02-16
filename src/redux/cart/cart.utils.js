@@ -1,7 +1,6 @@
-export const cartUtils = {
+export const CartUtils = {
   addItemToCart: (cartItems, itemToAdd) => {
     const exists = cartItems.find((cartItem) => cartItem.id === itemToAdd.id);
-
     if (exists) {
       return cartItems.map((cartItem) =>
         cartItem.id === itemToAdd.id
@@ -18,7 +17,6 @@ export const cartUtils = {
     const exists = cartItems.find(
       (cartItem) => cartItem.id === itemToRemove.id
     );
-
     if (exists.quantity === 1) {
       return cartItems.filter((item) => item.id !== itemToRemove.id);
     } else {
