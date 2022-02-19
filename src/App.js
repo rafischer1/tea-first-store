@@ -14,6 +14,7 @@ import Shop from "./pages/shop/shop.component";
 import Checkout from "./pages/checkout/checkout.component";
 
 import Header from "./components/header/header.component";
+import Category from "./pages/category/category.component";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -50,11 +51,7 @@ class App extends React.Component {
           <Route exact path="/" element={<HomePage />} />
           <Route path="shop" element={<Shop />} />
           <Route path="checkout" element={<Checkout />} />
-          <Route path="shop/applesauce" element={<Shop />} />
-          <Route path="shop/selbyville" element={<Shop />} />
-          <Route path="shop/dracula" element={<Shop />} />
-          <Route path="shop/photos" element={<Shop />} />
-          <Route path="shop/releases" element={<Shop />} />
+          <Route path="shop/:categoryId" element={<Category />} />
           {this.props.currentUser ? (
             <Route exact path="signin" element={<HomePage />} />
           ) : (
