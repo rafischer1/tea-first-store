@@ -20,6 +20,8 @@
 
 [React Stripe](https://github.com/azmenak/react-stripe-checkout)
 
+[Styled Components](https://styled-components.com/)
+
 ---
 ## NOTES
 
