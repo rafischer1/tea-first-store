@@ -8,17 +8,16 @@ import CollectionItem from "../../components/collection-item/collection-item.com
 
 const Collection = ({ collections }) => {
   let { collectionId } = useParams();
-  const collection = collections.find(
-    (collection) =>
-      collection.routeName.toLowerCase() === collectionId.toLowerCase()
-  );
+  const collection = collections[collectionId];
   if (collection) {
     return (
       <div className="collection">
-        <div className="title">{collectionId.toUpperCase()}</div>
-        {collection.items.map((item) => (
-          <CollectionItem item={item} key={item.id} />
-        ))}
+        <div className="title">{collection.title}</div>
+        <div className="items">
+          {collection.items.map((item) => (
+            <CollectionItem item={item} key={item.id} />
+          ))}
+        </div>
       </div>
     );
   } else {
