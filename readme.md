@@ -18,6 +18,8 @@
 
 [Dingbats](https://www.w3schools.com/charsets/ref_utf_dingbats.asp)
 
+[React Stripe](https://github.com/azmenak/react-stripe-checkout)
+
 ---
 ## NOTES
 
