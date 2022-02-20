@@ -1,5 +1,5 @@
-export const SHOP_DATA = [
-  {
+export const SHOP_DATA = {
+  applesauce: {
     id: 1,
     title: "Applesauce",
     routeName: "applesauce",
@@ -49,7 +49,7 @@ export const SHOP_DATA = [
       },
     ],
   },
-  {
+  selbyville: {
     id: 2,
     title: "Selbyville",
     routeName: "selbyville",
@@ -80,7 +80,7 @@ export const SHOP_DATA = [
       },
     ],
   },
-  {
+  dracula: {
     id: 3,
     title: "Dracula Songs",
     routeName: "dracula",
@@ -114,7 +114,7 @@ export const SHOP_DATA = [
       },
     ],
   },
-  {
+  releases: {
     id: 4,
     title: "Releases",
     routeName: "releases",
@@ -149,7 +149,7 @@ export const SHOP_DATA = [
       },
     ],
   },
-  {
+  photos: {
     id: 5,
     title: "Photos",
     routeName: "photos",
@@ -198,4 +198,6 @@ export const SHOP_DATA = [
       },
     ],
   },
-];
+};
+
+export default SHOP_DATA;

@@ -8,12 +8,12 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setUserAction } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
+import Header from "./components/header/header.component";
 import HomePage from "./pages/homepage/homepage.component";
 import SignInAndSignUp from "./pages/sign-in/sign-in-and-sign-up.component";
 import Shop from "./pages/shop/shop.component";
 import Checkout from "./pages/checkout/checkout.component";
-
-import Header from "./components/header/header.component";
+import Collection from "./pages/collection/collection.component";
 
 class App extends React.Component {
   unsubscribeFromAuth = null;
@@ -48,13 +48,11 @@ class App extends React.Component {
         <Header />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <Route path="shop" element={<Shop />} />
+          <Route path="shop" exact element={<Shop />}>
+            <Route path=":collectionId" element={<Collection />} />
+          </Route>
+
           <Route path="checkout" element={<Checkout />} />
-          <Route path="shop/applesauce" element={<Shop />} />
-          <Route path="shop/selbyville" element={<Shop />} />
-          <Route path="shop/dracula" element={<Shop />} />
-          <Route path="shop/photos" element={<Shop />} />
-          <Route path="shop/releases" element={<Shop />} />
           {this.props.currentUser ? (
             <Route exact path="signin" element={<HomePage />} />
           ) : (
