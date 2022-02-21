@@ -6,6 +6,8 @@ type Props = {
   children: any;
   isGoogleSignIn: boolean;
   inverted: boolean;
+  type?: "button" | "submit" | "reset" | undefined;
+  onClick?: any;
 };
 
 const CustomButton = ({

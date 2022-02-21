@@ -1,6 +1,6 @@
-import { Directory } from "./directory.interface";
+import { DirectorySection } from "./directory.interface";
 
-export const directoryData: Directory[] = [
+export const directoryData: DirectorySection[] = [
   {
     title: "applesauce",
     imageUrl:

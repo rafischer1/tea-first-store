@@ -1,12 +1,20 @@
 import React from "react";
+// @ts-ignore
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import "./sign-up.styles.scss";
 
-class SignUp extends React.Component {
-  constructor() {
-    super();
+type State = {
+  displayName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
+class SignUp extends React.Component<{}, State> {
+  constructor(props: any) {
+    super(props);
 
     this.state = {
       displayName: "",
@@ -16,12 +24,13 @@ class SignUp extends React.Component {
     };
   }
 
-  handleChange = (ev) => {
+  handleChange = (ev: any) => {
     const { value, name } = ev.target;
+    // @ts-ignore
     this.setState({ [name]: value });
   };
 
-  handleSubmit = async (ev) => {
+  handleSubmit = async (ev: any) => {
     ev.preventDefault();
     const { displayName, email, password, confirmPassword } = this.state;
 
@@ -31,7 +40,7 @@ class SignUp extends React.Component {
         if (user) {
           createUserProfileDocument(user, { displayName });
         }
-      } catch (error) {
+      } catch (error: any) {
         console.log("Error on user sign up:", error.message);
         alert("ERROR: " + error.message);
       }
@@ -87,7 +96,9 @@ class SignUp extends React.Component {
             required
           />
           <div className="buttons-container">
-            <CustomButton type="submit">Sign Up</CustomButton>
+            <CustomButton inverted={false} isGoogleSignIn={false} type="submit">
+              Sign Up
+            </CustomButton>
           </div>
         </form>
       </div>

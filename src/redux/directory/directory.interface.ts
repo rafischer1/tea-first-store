@@ -1,4 +1,4 @@
-export type Directory = {
+export type DirectorySection = {
   title: string;
   imageUrl: string;
   id: number;
