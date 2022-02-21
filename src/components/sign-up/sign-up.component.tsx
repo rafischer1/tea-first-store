@@ -4,6 +4,8 @@ import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 import "./sign-up.styles.scss";
+import firebase from "firebase/compat";
+import UserCredential = firebase.auth.UserCredential;
 
 type State = {
   displayName: string;
@@ -36,9 +38,12 @@ class SignUp extends React.Component<{}, State> {
 
     if (password === confirmPassword) {
       try {
-        const user = await auth.createUserWithEmailAndPassword(email, password);
+        const user: UserCredential = await auth.createUserWithEmailAndPassword(
+          email,
+          password
+        );
         if (user) {
-          createUserProfileDocument(user, { displayName });
+          await createUserProfileDocument(user, { displayName });
         }
       } catch (error: any) {
         console.log("Error on user sign up:", error.message);

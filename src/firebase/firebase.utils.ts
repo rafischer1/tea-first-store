@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import User = firebase.User;
 
 const config = {
   apiKey: "AIzaSyDVqqF--63wNpyA4qzq1k4LnadlBCmNaHk",
@@ -11,9 +12,18 @@ const config = {
   appId: "1:578742752749:web:3f2f9ea585937d1487c3e4",
 };
 
+export type FirebaseUserAuth = {
+  uid: string;
+  displayName: string;
+  email: string;
+};
+
 firebase.initializeApp(config);
 
-export const createUserProfileDocument = async (userAuth, additionalData) => {
+export const createUserProfileDocument = async (
+  userAuth: User,
+  additionalData: any
+) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
@@ -30,7 +40,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         createdAt,
         ...additionalData,
       });
-    } catch (error) {
+    } catch (error: any) {
       console.log("error creating user", error.message);
     }
   }

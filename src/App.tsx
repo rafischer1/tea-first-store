@@ -1,5 +1,8 @@
 import React from "react";
 import "./App.css";
+import firebase from "firebase/compat";
+import User = firebase.User;
+import { AppDispatch } from "./redux/store";
 
 import { Routes, Route } from "react-router-dom";
 import { connect } from "react-redux";
@@ -15,17 +18,20 @@ import Shop from "./pages/shop/shop.component";
 import Checkout from "./pages/checkout/checkout.component";
 import Collection from "./pages/collection/collection.component";
 
-class App extends React.Component {
-  unsubscribeFromAuth = null;
+class App extends React.Component<
+  { setCurrentUser: any; currentUser: User },
+  {}
+> {
+  unsubscribeFromAuth: firebase.Unsubscribe | null = null;
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
+        const userRef = await createUserProfileDocument(userAuth, {});
 
-        userRef.onSnapshot((snapShot) => {
+        userRef?.onSnapshot((snapShot) => {
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data(),
@@ -39,7 +45,7 @@ class App extends React.Component {
 
   componentWillUnmount() {
     // closes firebase auth subscription
-    this.unsubscribeFromAuth();
+    if (this.unsubscribeFromAuth) this.unsubscribeFromAuth();
   }
 
   render() {
@@ -47,16 +53,16 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route path="shop" exact element={<Shop />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="shop" element={<Shop />}>
             <Route path=":collectionId" element={<Collection />} />
           </Route>
 
           <Route path="checkout" element={<Checkout />} />
           {this.props.currentUser ? (
-            <Route exact path="signin" element={<HomePage />} />
+            <Route path="signin" element={<HomePage />} />
           ) : (
-            <Route exact path="signin" element={<SignInAndSignUp />} />
+            <Route path="signin" element={<SignInAndSignUp />} />
           )}
         </Routes>
       </div>
@@ -68,8 +74,8 @@ const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCurrentUser: (user) => dispatch(setUserAction(user)),
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  setCurrentUser: (user: User) => dispatch(setUserAction(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

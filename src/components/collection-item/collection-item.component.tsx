@@ -3,8 +3,16 @@ import { connect } from "react-redux";
 import { addItemToCart } from "../../redux/cart/cart.actions";
 import "./collection-item.styles.scss";
 import CustomButton from "../custom-button/custom-button.component";
+import { CartItem } from "../../redux/cart/cart.interface";
+import { AppDispatch } from "../../redux/store";
 
-const CollectionItem = ({ item, addItem }) => (
+type Props = {
+  item: CartItem;
+  addItem: (item: CartItem) => { payload: CartItem; type: string };
+};
+
+// TODO:: investigate how to type the dispatch call
+const CollectionItem = ({ item, addItem }: Props) => (
   <div className="collection-item">
     <div
       className="image"
@@ -14,14 +22,18 @@ const CollectionItem = ({ item, addItem }) => (
       <span className="name">{item.name}</span>
       <span className="price">${item.price}</span>
     </div>
-    <CustomButton inverted onClick={() => addItem(item)}>
+    <CustomButton
+      inverted={true}
+      isGoogleSignIn={false}
+      onClick={() => addItem(item)}
+    >
       Add To Cart
     </CustomButton>
   </div>
 );
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (item) => dispatch(addItemToCart(item)),
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  addItem: (item: CartItem) => dispatch(addItemToCart(item)),
 });
 
 export default connect(null, mapDispatchToProps)(CollectionItem);
