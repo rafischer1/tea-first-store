@@ -8,8 +8,14 @@ import {
 import "./checkout.styles.scss";
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import StripeButton from "../../components/stripe-button/stripe-button.component";
+import { CartItem } from "../../redux/cart/cart.interface";
 
-const Checkout = ({ cartItems, total }) => (
+type Props = {
+  cartItems: CartItem[];
+  total: number;
+};
+
+const Checkout = ({ cartItems, total }: Props) => (
   <div className="checkout-page">
     <div className="checkout-header">
       <div className="header-block">
@@ -47,4 +53,5 @@ const mapStateToProps = createStructuredSelector({
   total: selectCartTotal,
 });
 
+// @ts-ignore
 export default connect(mapStateToProps)(Checkout);

@@ -11,7 +11,6 @@ type Props = {
   addItem: (item: CartItem) => { payload: CartItem; type: string };
 };
 
-// TODO:: investigate how to type the dispatch call
 const CollectionItem = ({ item, addItem }: Props) => (
   <div className="collection-item">
     <div

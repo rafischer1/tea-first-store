@@ -13,7 +13,7 @@ type Props = {
 };
 
 // TODO:: type the element return that includes connect
-const Collection: any = ({ collections }: Props) => {
+const Collection = ({ collections }: Props) => {
   // TODO:: INVESTIGATE IF THIS IS BROKEN
   let key: any = "";
   let { collectionId } = useParams();
@@ -43,4 +43,5 @@ const mapStateToProps = createStructuredSelector({
   collections: selectShopCollections,
 });
 
+// @ts-ignore
 export default connect(mapStateToProps)(Collection);
