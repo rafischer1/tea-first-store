@@ -5,3 +5,8 @@ export type CartItem = {
   price: number;
   quantity?: number;
 };
+
+export type Cart = {
+  hidden: boolean;
+  cartItems: CartItem[];
+};

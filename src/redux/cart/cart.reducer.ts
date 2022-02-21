@@ -1,12 +1,10 @@
 import { CartActionTypes } from "./cart.types";
 import { CartUtils } from "./cart.utils";
+import { AnyAction } from "redux";
 
 const INITIAL_STATE = { hidden: true, cartItems: [] };
 
-const cartReducer = (
-  state = INITIAL_STATE,
-  action: { type: string; payload: any }
-) => {
+const cartReducer = (state = INITIAL_STATE, action: AnyAction) => {
   switch (action.type) {
     case CartActionTypes.TOGGLE_CART_DROPDOWN:
       return {

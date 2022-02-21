@@ -1,5 +1,5 @@
 import { createSelector } from "reselect";
-import { CartItem } from "./cart.interface";
+import { Cart, CartItem } from "./cart.interface";
 import { RootState } from "../root-reducer";
 
 const selectCart = (state: RootState) => state.cartDropdown;
@@ -7,7 +7,7 @@ const selectCart = (state: RootState) => state.cartDropdown;
 // * memoized selectors
 export const selectCartItems = createSelector(
   [selectCart],
-  (cartDropdown) => cartDropdown.cartItems
+  (cartDropdown: Cart) => cartDropdown.cartItems
 );
 
 export const selectCartItemsCount = createSelector(
@@ -22,7 +22,7 @@ export const selectCartItemsCount = createSelector(
 
 export const selectCartHidden = createSelector(
   [selectCart],
-  (cartDropdown) => cartDropdown.hidden
+  (cartDropdown: Cart) => cartDropdown.hidden
 );
 
 export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
