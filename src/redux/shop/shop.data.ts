@@ -1,4 +1,6 @@
-export const SHOP_DATA = {
+import { ShopCollection } from "./shop.interface";
+
+export const SHOP_DATA: ShopCollection = {
   applesauce: {
     id: 1,
     title: "Applesauce",

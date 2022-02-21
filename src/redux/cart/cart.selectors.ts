@@ -1,9 +1,8 @@
 import { createSelector } from "reselect";
 import { CartItem } from "./cart.interface";
-import { StateFromReducersMapObject } from "redux";
+import { RootState } from "../root-reducer";
 
-const selectCart = (state: StateFromReducersMapObject<any>) =>
-  state.cartDropdown;
+const selectCart = (state: RootState) => state.cartDropdown;
 
 // * memoized selectors
 export const selectCartItems = createSelector(

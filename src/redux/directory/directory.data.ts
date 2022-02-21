@@ -1,4 +1,6 @@
-export const directoryData = [
+import { Directory } from "./directory.interface";
+
+export const directoryData: Directory[] = [
   {
     title: "applesauce",
     imageUrl:

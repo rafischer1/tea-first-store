@@ -21,3 +21,5 @@ const rootReducer = combineReducers({
 
 // * represents the base reducer for all states of the app
 export default persistReducer(persistConfig, rootReducer);
+
+export type RootState = ReturnType<typeof rootReducer>;
