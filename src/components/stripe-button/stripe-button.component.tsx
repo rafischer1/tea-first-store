@@ -1,13 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import StripeCheckout from "react-stripe-checkout";
+import StripeCheckout, { Token } from "react-stripe-checkout";
 import { clearCart } from "../../redux/cart/cart.actions";
 import { useNavigate } from "react-router-dom";
 
-const StripeButton = ({ price, clearCart }) => {
+// TODO:: dispatch types
+type Props = {
+  price: number;
+  clearCart: any;
+};
+
+const StripeButton = ({ price, clearCart }: Props) => {
   let nav = useNavigate();
   const priceForStripe = price * 100;
-  const onToken = (token) => {
+  const onToken = (token: Token) => {
     alert("Payment Success");
     console.log("PAYMENT TOKEN:", token);
     clearCart();
@@ -32,7 +38,8 @@ const StripeButton = ({ price, clearCart }) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
+// TODO: figure out dispatch typing
+const mapDispatchToProps = (dispatch: any) => ({
   clearCart: () => dispatch(clearCart()),
 });
 

@@ -3,7 +3,10 @@ import { CartUtils } from "./cart.utils";
 
 const INITIAL_STATE = { hidden: true, cartItems: [] };
 
-const cartReducer = (state = INITIAL_STATE, action) => {
+const cartReducer = (
+  state = INITIAL_STATE,
+  action: { type: string; payload: any }
+) => {
   switch (action.type) {
     case CartActionTypes.TOGGLE_CART_DROPDOWN:
       return {
