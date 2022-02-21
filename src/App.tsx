@@ -1,7 +1,5 @@
 import React from "react";
 import "./App.css";
-import firebase from "firebase/compat";
-import User = firebase.User;
 import { AppDispatch } from "./redux/store";
 
 import { Routes, Route } from "react-router-dom";
@@ -19,10 +17,10 @@ import Checkout from "./pages/checkout/checkout.component";
 import Collection from "./pages/collection/collection.component";
 
 class App extends React.Component<
-  { setCurrentUser: any; currentUser: User },
+  { setCurrentUser: any; currentUser: any },
   {}
 > {
-  unsubscribeFromAuth: firebase.Unsubscribe | null = null;
+  unsubscribeFromAuth: any | null = null;
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
@@ -75,7 +73,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({
-  setCurrentUser: (user: User) => dispatch(setUserAction(user)),
+  setCurrentUser: (user: any) => dispatch(setUserAction(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

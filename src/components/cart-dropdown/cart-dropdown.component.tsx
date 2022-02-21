@@ -8,10 +8,12 @@ import { selectCartItems } from "../../redux/cart/cart.selectors";
 import { toggleCartDropdownAction } from "../../redux/cart/cart.actions";
 import { CartItem } from "../../redux/cart/cart.interface";
 import CartItemComponent from "../cart-item/cart-item.component";
+import { Dispatch } from "@reduxjs/toolkit";
 
+// TODO: invesitage dispatch call
 type Props = {
-  cartItems: CartItem[];
-  dispatch: any;
+  cartItems: CartItem[] | null;
+  dispatch: Dispatch | null;
 };
 
 const CartDropdown: React.FC<Props> = ({ cartItems, dispatch }: Props) => {
@@ -19,29 +21,40 @@ const CartDropdown: React.FC<Props> = ({ cartItems, dispatch }: Props) => {
 
   const goToCheckout = (): void => {
     nav("/checkout");
-    dispatch(toggleCartDropdownAction());
+    if (dispatch) {
+      dispatch(toggleCartDropdownAction());
+    }
   };
-
-  return (
-    <div className="cart-dropdown">
-      <div className="cart-items">
-        {cartItems.length > 0 ? (
-          cartItems.map((cartItem) => (
-            <CartItemComponent key={cartItem.id} item={cartItem} />
-          ))
-        ) : (
-          <span className="empty-message">[cart is empty]</span>
-        )}
+  if (cartItems) {
+    return (
+      <div className="cart-dropdown">
+        <div className="cart-items">
+          {cartItems?.length > 0 ? (
+            cartItems?.map((cartItem) => (
+              <CartItemComponent key={cartItem.id} item={cartItem} />
+            ))
+          ) : (
+            <span className="empty-message">[cart is empty]</span>
+          )}
+        </div>
+        <CustomButton
+          isGoogleSignIn={false}
+          inverted={false}
+          onClick={goToCheckout}
+        >
+          Go To Checkout
+        </CustomButton>
       </div>
-      <CustomButton
-        isGoogleSignIn={false}
-        inverted={false}
-        onClick={goToCheckout}
-      >
-        Go To Checkout
-      </CustomButton>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="cart-dropdown">
+        <div className="cart-items">
+          <span className="empty-message">[cart is empty]</span>
+        </div>
+      </div>
+    );
+  }
 };
 
 const mapStateToProps = createStructuredSelector({

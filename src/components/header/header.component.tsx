@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import "./header.styles.scss";
+// @ts-ignore
 import logo from "../../assets/tea.png";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
@@ -10,7 +11,12 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 
-const Header = ({ currentUser, cartDropdownHidden }) => (
+type HeaderProps = {
+  cartDropdownHidden: boolean;
+  currentUser: any;
+};
+
+const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => (
   <div className="header">
     <Link to="/">
       <img src={logo} className="logo-container" alt="Logo Image" />
@@ -33,7 +39,9 @@ const Header = ({ currentUser, cartDropdownHidden }) => (
       )}
       <CartIcon />
     </div>
-    {cartDropdownHidden ? null : <CartDropdown />}
+    {cartDropdownHidden ? null : (
+      <CartDropdown cartItems={null} dispatch={null} />
+    )}
   </div>
 );
 

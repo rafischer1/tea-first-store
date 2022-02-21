@@ -7,7 +7,11 @@ const Shop = () => {
   let { pathname } = useLocation();
   return (
     <div className="shop-page">
-      {pathname.split("/").length > 2 ? <Outlet /> : <CollectionsOverview />}
+      {pathname.split("/").length > 2 ? (
+        <Outlet />
+      ) : (
+        <CollectionsOverview collections={[]} />
+      )}
     </div>
   );
 };
