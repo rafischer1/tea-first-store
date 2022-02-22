@@ -15,8 +15,6 @@ import SignInAndSignUp from "./pages/sign-in/sign-in-and-sign-up.component";
 import Shop from "./pages/shop/shop.component";
 import Checkout from "./pages/checkout/checkout.component";
 import Collection from "./pages/collection/collection.component";
-import firebase from "firebase/compat";
-import User = firebase.User;
 
 class App extends React.Component<
   { setCurrentUser: any; currentUser: any },
@@ -30,7 +28,7 @@ class App extends React.Component<
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth, {});
-
+        console.log("CURRENTUSER:", userRef);
         userRef?.onSnapshot((snapShot) => {
           setCurrentUser({
             id: snapShot.id,
@@ -75,7 +73,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({
-  setCurrentUser: (user: User) => dispatch(setUserAction(user)),
+  setCurrentUser: (user: any) => dispatch(setUserAction(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

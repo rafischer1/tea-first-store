@@ -20,7 +20,7 @@ const Collection = ({ collections }: Props) => {
   if (collectionId) {
     key = collectionId;
     const collection = collections.find(
-      (c) => c.title.toLowerCase() === key.toLowerCase()
+      (c) => c.routeName.toLowerCase() === key.toLowerCase()
     );
     if (collection) {
       return (
