@@ -21,6 +21,12 @@
 [React Stripe](https://github.com/azmenak/react-stripe-checkout)
 
 ---
+
+## TYPESCRIPT CONVERSION
+
+[Redux Typescript Docs](https://redux.js.org/usage/usage-with-typescript)
+
+---
 ## NOTES
 
 mapStateToProps
