@@ -12,11 +12,11 @@ type CollectionsProps = {
 //TODO::inspect the use of collection from the hashMap type
 const CollectionsOverview = ({ collections }: CollectionsProps) => (
   <div className="collections-overview">
-    {collections.map((shop: ShopCollection) => (
+    {collections.map((collection: ShopCollection) => (
       <PreviewCollection
-        key={shop.collection.id}
-        title={shop.collection.title}
-        items={shop.collection.items}
+        key={collection.id}
+        title={collection.title}
+        items={collection.items}
       />
     ))}
   </div>

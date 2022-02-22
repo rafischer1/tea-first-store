@@ -15,6 +15,8 @@ import SignInAndSignUp from "./pages/sign-in/sign-in-and-sign-up.component";
 import Shop from "./pages/shop/shop.component";
 import Checkout from "./pages/checkout/checkout.component";
 import Collection from "./pages/collection/collection.component";
+import firebase from "firebase/compat";
+import User = firebase.User;
 
 class App extends React.Component<
   { setCurrentUser: any; currentUser: any },
@@ -73,7 +75,7 @@ const mapStateToProps = createStructuredSelector({
 });
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({
-  setCurrentUser: (user: any) => dispatch(setUserAction(user)),
+  setCurrentUser: (user: User) => dispatch(setUserAction(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

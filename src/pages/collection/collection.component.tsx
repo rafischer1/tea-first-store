@@ -19,13 +19,15 @@ const Collection = ({ collections }: Props) => {
   let { collectionId } = useParams();
   if (collectionId) {
     key = collectionId;
-    const collection = collections[key];
+    const collection = collections.find(
+      (c) => c.title.toLowerCase() === key.toLowerCase()
+    );
     if (collection) {
       return (
         <div className="collection">
           <div className="title">{collection.title}</div>
           <div className="items">
-            {collection.items.items.map((item: CartItem) => (
+            {collection.items.map((item: CartItem) => (
               <CollectionItem item={item} key={item.id} />
             ))}
           </div>

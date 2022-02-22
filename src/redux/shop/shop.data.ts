@@ -1,7 +1,7 @@
 import { ShopCollection } from "./shop.interface";
 
-export const SHOP_DATA: ShopCollection = {
-  applesauce: {
+export const SHOP_DATA: ShopCollection[] = [
+  {
     id: 1,
     title: "Applesauce",
     routeName: "applesauce",
@@ -51,7 +51,7 @@ export const SHOP_DATA: ShopCollection = {
       },
     ],
   },
-  selbyville: {
+  {
     id: 2,
     title: "Selbyville",
     routeName: "selbyville",
@@ -82,7 +82,7 @@ export const SHOP_DATA: ShopCollection = {
       },
     ],
   },
-  dracula: {
+  {
     id: 3,
     title: "Dracula Songs",
     routeName: "dracula",
@@ -116,7 +116,7 @@ export const SHOP_DATA: ShopCollection = {
       },
     ],
   },
-  releases: {
+  {
     id: 4,
     title: "Releases",
     routeName: "releases",
@@ -151,7 +151,7 @@ export const SHOP_DATA: ShopCollection = {
       },
     ],
   },
-  photos: {
+  {
     id: 5,
     title: "Photos",
     routeName: "photos",
@@ -200,6 +200,6 @@ export const SHOP_DATA: ShopCollection = {
       },
     ],
   },
-};
+];
 
 export default SHOP_DATA;
