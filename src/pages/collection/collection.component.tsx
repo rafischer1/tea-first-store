@@ -12,15 +12,11 @@ type Props = {
   collections: ShopCollection[];
 };
 
-// TODO:: type the element return that includes connect
 const Collection = ({ collections }: Props) => {
-  // TODO:: INVESTIGATE IF THIS IS BROKEN
-  let key: any = "";
   let { collectionId } = useParams();
   if (collectionId) {
-    key = collectionId;
     const collection = collections.find(
-      (c) => c.routeName.toLowerCase() === key.toLowerCase()
+      (c) => c.routeName.toLowerCase() === collectionId?.toLowerCase()
     );
     if (collection) {
       return (
