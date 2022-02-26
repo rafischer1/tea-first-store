@@ -15,7 +15,6 @@ describe("CartDropdown Component", () => {
   >;
 
   beforeEach(() => {
-    c;
     wrapper = shallow(
       <Provider store={store}>
         <CartDropdown cartItems={mocks.mockCartItems} dispatch={null} />
