@@ -11,12 +11,15 @@ import CartItemComponent from "../cart-item/cart-item.component";
 import { Dispatch } from "@reduxjs/toolkit";
 
 // TODO: invesitage dispatch call
-type Props = {
+type CartDropdownProps = {
   cartItems: CartItem[] | null;
   dispatch: Dispatch | null;
 };
 
-const CartDropdown: React.FC<Props> = ({ cartItems, dispatch }: Props) => {
+const CartDropdown: React.FC<CartDropdownProps> = ({
+  cartItems,
+  dispatch,
+}: CartDropdownProps) => {
   let nav: NavigateFunction = useNavigate();
 
   const goToCheckout = (): void => {
