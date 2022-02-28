@@ -11,7 +11,6 @@ import { selectCurrentUser } from "../../redux/user/user.selectors";
 import {
   HeaderContainer,
   LogoContainer,
-  OptionDiv,
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
@@ -34,9 +33,13 @@ const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => (
       <OptionLink to="shop">SHOP</OptionLink>
       <OptionLink to="contact">CONTACT</OptionLink>
       {currentUser ? (
-        <OptionDiv className="option" onClick={() => auth.signOut()}>
+        <OptionLink
+          as={"div"}
+          className="option"
+          onClick={() => auth.signOut()}
+        >
           SIGN OUT
-        </OptionDiv>
+        </OptionLink>
       ) : (
         <OptionLink to="signin">SIGN IN</OptionLink>
       )}
