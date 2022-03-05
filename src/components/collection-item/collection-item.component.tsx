@@ -21,13 +21,15 @@ const CollectionItem = ({ item, addItem }: Props) => (
       <span className="name">{item.name}</span>
       <span className="price">${item.price}</span>
     </div>
-    <CustomButton
-      inverted={true}
-      isGoogleSignIn={false}
-      onClick={() => addItem(item)}
-    >
-      Add To Cart
-    </CustomButton>
+    <div className="custom-button">
+      <CustomButton
+        inverted={true}
+        isGoogleSignIn={false}
+        onClick={() => addItem(item)}
+      >
+        Add To Cart
+      </CustomButton>
+    </div>
   </div>
 );
 
