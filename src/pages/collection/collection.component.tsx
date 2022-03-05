@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./collection.styles.scss";
 import { useParams } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import { selectShopCollections } from "../../redux/shop/shop.selectors";
 import CollectionItem from "../../components/collection-item/collection-item.component";
 import { CartItem } from "../../redux/cart/cart.interface";
 import { ShopCollection } from "../../redux/shop/shop.interface";
+import { CollectionStyles } from "./collection.styles";
 
 type Props = {
   collections: ShopCollection[];
@@ -20,14 +20,14 @@ const Collection = ({ collections }: Props) => {
     );
     if (collection) {
       return (
-        <div className="collection">
-          <div className="title">{collection.title}</div>
-          <div className="items">
+        <CollectionStyles.Container>
+          <CollectionStyles.Title>{collection.title}</CollectionStyles.Title>
+          <CollectionStyles.ItemsContainer>
             {collection.items.map((item: CartItem) => (
               <CollectionItem item={item} key={item.id} />
             ))}
-          </div>
-        </div>
+          </CollectionStyles.ItemsContainer>
+        </CollectionStyles.Container>
       );
     } else {
       return <div>404: Items Not Found</div>;
