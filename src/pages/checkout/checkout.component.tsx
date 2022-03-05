@@ -10,14 +10,14 @@ import StripeButton from "../../components/stripe-button/stripe-button.component
 import { CartItem } from "../../redux/cart/cart.interface";
 import { CheckoutPageStyles } from "./checkout.component.styles";
 
-type Props = {
+type CheckoutProps = {
   cartItems: CartItem[];
   total: number;
 };
 
 const headerTitles = ["Product", "Description", "Quantity", "Price", "Remove"];
 
-const Checkout = ({ cartItems, total }: Props) => (
+const Checkout = ({ cartItems, total }: CheckoutProps) => (
   <CheckoutPageStyles.Container>
     <CheckoutPageStyles.Header>
       {headerTitles.map((title, index) => (
