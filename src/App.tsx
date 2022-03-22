@@ -11,11 +11,11 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 
 import Header from "./components/header/header.component";
 
-import SignInAndSignUp from "./pages/sign-in/sign-in-and-sign-up.component";
-import Shop from "./pages/shop/shop.component";
-import Checkout from "./pages/checkout/checkout.component";
-import Collection from "./pages/collection/collection.component";
+import SignInAndSignUp from "./routes/sign-in/sign-in-and-sign-up.component";
+import Checkout from "./routes/checkout/checkout.component";
+import Collection from "./routes/collection/collection.component";
 import Home from "./routes/home/home.component";
+import Shop from "./routes/shop/shop.component";
 
 class App extends React.Component<
   { setCurrentUser: any; currentUser: any },
@@ -46,6 +46,9 @@ class App extends React.Component<
     // closes firebase auth subscription
     if (this.unsubscribeFromAuth) this.unsubscribeFromAuth();
   }
+
+  // <Routes> register all the routes for the application
+  // <Route> the relative path where path matches and render said component
 
   render() {
     return (
