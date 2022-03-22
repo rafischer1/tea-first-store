@@ -8,6 +8,8 @@
 
 [React](https://reactjs.org/docs/conditional-rendering.html)
 
+[React Context](https://reactjs.org/docs/context.html)
+
 [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
 
 [Redux Logger](https://www.npmjs.com/package/redux-logger)
@@ -21,6 +23,8 @@
 [React Stripe](https://github.com/azmenak/react-stripe-checkout)
 
 [Styled Components](https://styled-components.com/)
+
+[Redux Saga](https://redux-saga.js.org/docs/introduction/GettingStarted)
 
 ---
 
