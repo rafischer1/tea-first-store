@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import { doc } from "firebase/firestore";
 
 const config = {
   apiKey: "AIzaSyDVqqF--63wNpyA4qzq1k4LnadlBCmNaHk",
@@ -19,7 +20,9 @@ export const createUserProfileDocument = async (
 ) => {
   if (!userAuth) return;
 
-  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  const userRef = db.doc(`users/${userAuth.uid}`);
+  const userDocRef = doc(db, "users", userAuth.uid);
+  console.log("USER DOC REF ALTERNATE::: ", userDocRef);
 
   const snapShot = await userRef.get();
 
@@ -42,7 +45,7 @@ export const createUserProfileDocument = async (
 };
 
 export const auth = firebase.auth();
-export const firestore = firebase.firestore();
+export const db = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });
