@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import { AppDispatch } from "./redux/store";
 
 import { Routes, Route } from "react-router-dom";
@@ -10,11 +10,12 @@ import { setUserAction } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
 import Header from "./components/header/header.component";
-import HomePage from "./pages/homepage/homepage.component";
+
 import SignInAndSignUp from "./pages/sign-in/sign-in-and-sign-up.component";
 import Shop from "./pages/shop/shop.component";
 import Checkout from "./pages/checkout/checkout.component";
 import Collection from "./pages/collection/collection.component";
+import Home from "./routes/home/home.component";
 
 class App extends React.Component<
   { setCurrentUser: any; currentUser: any },
@@ -28,7 +29,7 @@ class App extends React.Component<
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth, {});
-        console.log("CURRENTUSER:", userRef);
+        // console.log("CURRENTUSER:", userRef);
         userRef?.onSnapshot((snapShot) => {
           setCurrentUser({
             id: snapShot.id,
@@ -51,14 +52,14 @@ class App extends React.Component<
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Home />} />
           <Route path="shop" element={<Shop />}>
             <Route path=":collectionId" element={<Collection />} />
           </Route>
 
           <Route path="checkout" element={<Checkout />} />
           {this.props.currentUser ? (
-            <Route path="signin" element={<HomePage />} />
+            <Route path="signin" element={<Home />} />
           ) : (
             <Route path="signin" element={<SignInAndSignUp />} />
           )}
