@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+// import { Outlet } from "react-router-dom";
 // @ts-ignore
 import logo from "../../assets/tea.png";
 import { auth } from "../../firebase/firebase.utils";
@@ -48,6 +49,7 @@ const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => (
     {cartDropdownHidden ? null : (
       <CartDropdown cartItems={null} dispatch={null} />
     )}
+    {/*<Outlet />*/}
   </HeaderContainer>
 );
 

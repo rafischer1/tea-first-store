@@ -55,7 +55,8 @@ class App extends React.Component<
       <div className="App">
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          {/*<Route path="/" element={<Header />}>*/}
+          <Route index element={<Home />} />
           <Route path="shop" element={<Shop />}>
             <Route path=":collectionId" element={<Collection />} />
           </Route>
@@ -66,6 +67,7 @@ class App extends React.Component<
           ) : (
             <Route path="signin" element={<SignInAndSignUp />} />
           )}
+          {/*</Route>*/}
         </Routes>
       </div>
     );
