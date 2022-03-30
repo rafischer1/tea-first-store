@@ -15,7 +15,8 @@ import {
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
-import { ColorContext } from "../../contexts/color.context";
+import { ColorContext, colorNameMap } from "../../contexts/color.context";
+import ColorContextSelect from "../color-context-update.component";
 
 type HeaderProps = {
   cartDropdownHidden: boolean;
@@ -23,13 +24,7 @@ type HeaderProps = {
 };
 
 const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
-  const { color, setColor } = useContext(ColorContext);
-  const updateRedContext = () => {
-    console.log(
-      color === "red" ? "setColorContext(blue)" : "setColorContext(red)"
-    );
-    setColor(color === "red" ? "blue" : "red");
-  };
+  const { color } = useContext(ColorContext);
 
   return (
     <HeaderContainer>
@@ -55,12 +50,10 @@ const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
           <OptionLink to="signin">SIGN IN</OptionLink>
         )}
         <CartIcon />
-        <div
-          style={{ cursor: "pointer", outline: "none", marginTop: 5 }}
-          onClick={updateRedContext}
-        >
-          {color === "red" ? "🔴" : "🔵"}
+        <div style={{ cursor: "pointer", outline: "none", marginTop: 5 }}>
+          {colorNameMap[color]}
         </div>
+        <ColorContextSelect />
       </OptionsContainer>
       {cartDropdownHidden ? null : (
         <CartDropdown cartItems={null} dispatch={null} />
