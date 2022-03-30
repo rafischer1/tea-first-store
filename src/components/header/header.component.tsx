@@ -15,7 +15,7 @@ import {
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
-import { RedContext } from "../../contexts/redBlue.context";
+import { ColorContext } from "../../contexts/color.context";
 
 type HeaderProps = {
   cartDropdownHidden: boolean;
@@ -23,10 +23,12 @@ type HeaderProps = {
 };
 
 const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
-  const { red, setRed } = useContext(RedContext);
+  const { color, setColor } = useContext(ColorContext);
   const updateRedContext = () => {
-    console.log(red === "red" ? "setRedContext(blue)" : "setRedContext(red)");
-    setRed(red === "red" ? "blue" : "red");
+    console.log(
+      color === "red" ? "setColorContext(blue)" : "setColorContext(red)"
+    );
+    setColor(color === "red" ? "blue" : "red");
   };
 
   return (
@@ -57,7 +59,7 @@ const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
           style={{ cursor: "pointer", outline: "none", marginTop: 5 }}
           onClick={updateRedContext}
         >
-          {red === "red" ? "🔴" : "🔵"}
+          {color === "red" ? "🔴" : "🔵"}
         </div>
       </OptionsContainer>
       {cartDropdownHidden ? null : (

@@ -7,17 +7,17 @@ import { store, persistor } from "./redux/store";
 import { UserProvider } from "./contexts/user.context";
 import "./index.scss";
 import App from "./App";
-import { RedProvider } from "./contexts/redBlue.context";
+import { ColorProvider } from "./contexts/color.context";
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor}>
-        <RedProvider>
+        <ColorProvider>
           <UserProvider>
             <App />
           </UserProvider>
-        </RedProvider>
+        </ColorProvider>
       </PersistGate>
     </BrowserRouter>
   </Provider>,
