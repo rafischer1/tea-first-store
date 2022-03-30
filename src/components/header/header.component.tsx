@@ -25,7 +25,7 @@ type HeaderProps = {
 const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
   const { red, setRed } = useContext(RedContext);
   const updateRedContext = () => {
-    console.log("RedContext updated:", red === "red" ? "blue" : "red");
+    console.log(red === "red" ? "setRedContext(blue)" : "setRedContext(red)");
     setRed(red === "red" ? "blue" : "red");
   };
 
@@ -55,7 +55,7 @@ const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
         <CartIcon />
         <div
           style={{ cursor: "pointer", outline: "none", marginTop: 5 }}
-          onClick={() => updateRedContext()}
+          onClick={updateRedContext}
         >
           {red === "red" ? "🔴" : "🔵"}
         </div>
