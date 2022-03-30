@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 // import { Outlet } from "react-router-dom";
@@ -15,43 +15,59 @@ import {
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
+import { RedContext } from "../../contexts/redBlue.context";
 
 type HeaderProps = {
   cartDropdownHidden: boolean;
   currentUser: any;
 };
 
-const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => (
-  <HeaderContainer>
-    <LogoContainer to="/">
-      <img
-        src={logo}
-        style={{ height: 45, borderRadius: 20 }}
-        alt="Logo Image"
-      />
-    </LogoContainer>
-    <OptionsContainer>
-      <OptionLink to="shop">SHOP</OptionLink>
-      <OptionLink to="contact">CONTACT</OptionLink>
-      {currentUser ? (
-        <OptionLink
-          as={"div"}
-          className="option"
-          onClick={() => auth.signOut()}
+const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
+  const { red, setRed } = useContext(RedContext);
+  const updateRedContext = () => {
+    console.log("RedContext updated:", red === "red" ? "blue" : "red");
+    setRed(red === "red" ? "blue" : "red");
+  };
+
+  return (
+    <HeaderContainer>
+      <LogoContainer to="/">
+        <img
+          src={logo}
+          style={{ height: 45, borderRadius: 20 }}
+          alt="Logo Image"
+        />
+      </LogoContainer>
+      <OptionsContainer>
+        <OptionLink to="shop">SHOP</OptionLink>
+        <OptionLink to="contact">CONTACT</OptionLink>
+        {currentUser ? (
+          <OptionLink
+            as={"div"}
+            className="option"
+            onClick={() => auth.signOut()}
+          >
+            SIGN OUT
+          </OptionLink>
+        ) : (
+          <OptionLink to="signin">SIGN IN</OptionLink>
+        )}
+        <CartIcon />
+        <div
+          style={{ cursor: "pointer", outline: "none", marginTop: 5 }}
+          onClick={() => updateRedContext()}
         >
-          SIGN OUT
-        </OptionLink>
-      ) : (
-        <OptionLink to="signin">SIGN IN</OptionLink>
+          {red === "red" ? "🔴" : "🔵"}
+        </div>
+      </OptionsContainer>
+      {cartDropdownHidden ? null : (
+        <CartDropdown cartItems={null} dispatch={null} />
       )}
-      <CartIcon />
-    </OptionsContainer>
-    {cartDropdownHidden ? null : (
-      <CartDropdown cartItems={null} dispatch={null} />
-    )}
-    {/*<Outlet />*/}
-  </HeaderContainer>
-);
+
+      {/*<Outlet />*/}
+    </HeaderContainer>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
