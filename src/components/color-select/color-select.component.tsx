@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ColorContext, ColorName } from "../../contexts/color.context";
 
-const ColorContextSelect = () => {
+function ColorContextSelect() {
   const { color, setColor } = useContext(ColorContext);
   const colors: ColorName[] = [
     "red",
@@ -27,6 +27,6 @@ const ColorContextSelect = () => {
       ))}
     </select>
   );
-};
+}
 
 export default ColorContextSelect;
