@@ -8,16 +8,19 @@ import "./index.scss";
 import App from "./App";
 import { UserProvider } from "./contexts/user.context";
 import { ColorProvider } from "./contexts/color.context";
+import { ProductsProvider } from "./contexts/products.context";
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor}>
-        <UserProvider>
-          <ColorProvider>
-            <App />
-          </ColorProvider>
-        </UserProvider>
+        <ColorProvider>
+          <UserProvider>
+            <ProductsProvider>
+              <App />
+            </ProductsProvider>
+          </UserProvider>
+        </ColorProvider>
       </PersistGate>
     </BrowserRouter>
   </Provider>,
