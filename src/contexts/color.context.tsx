@@ -10,6 +10,7 @@ export const ColorProvider = ({ children }: any) => {
   const initialValueFromLocalStorage =
     window.localStorage.getItem("color") ?? null;
   if (initialValueFromLocalStorage)
+    // split to access ColorName from -> "color: icon"
     initialValue = initialValueFromLocalStorage.split(":")[0];
   const [color, setColor] = useState(initialValue);
   const value = { color, setColor };
@@ -23,7 +24,14 @@ export const ColorProvider = ({ children }: any) => {
   );
 };
 
-export type ColorName = "red" | "blue" | "white" | "black" | "orange" | "green";
+export type ColorName =
+  | "red"
+  | "blue"
+  | "white"
+  | "black"
+  | "orange"
+  | "green"
+  | "purple";
 
 export const colorNameMap: { [key: string]: string } = {
   red: "🔴",
@@ -32,4 +40,5 @@ export const colorNameMap: { [key: string]: string } = {
   white: "⚪️",
   orange: "🔶",
   green: "❇️",
+  purple: "💜",
 };

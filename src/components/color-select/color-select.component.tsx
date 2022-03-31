@@ -10,6 +10,7 @@ function ColorContextSelect() {
     "black",
     "orange",
     "green",
+    "purple",
   ];
   const updateRedContext = (event: any) =>
     setColor(event.target.value as ColorName);
