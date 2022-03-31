@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+// import { Outlet } from "react-router-dom";
 // @ts-ignore
 import logo from "../../assets/tea.png";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import ColorContextSelect from "../color-select/color-select.component";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import {
@@ -14,42 +16,53 @@ import {
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
+import { ColorContext, colorNameMap } from "../../contexts/color.context";
 
 type HeaderProps = {
   cartDropdownHidden: boolean;
   currentUser: any;
 };
 
-const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => (
-  <HeaderContainer>
-    <LogoContainer to="/">
-      <img
-        src={logo}
-        style={{ height: 45, borderRadius: 20 }}
-        alt="Logo Image"
-      />
-    </LogoContainer>
-    <OptionsContainer>
-      <OptionLink to="shop">SHOP</OptionLink>
-      <OptionLink to="contact">CONTACT</OptionLink>
-      {currentUser ? (
-        <OptionLink
-          as={"div"}
-          className="option"
-          onClick={() => auth.signOut()}
-        >
-          SIGN OUT
-        </OptionLink>
-      ) : (
-        <OptionLink to="signin">SIGN IN</OptionLink>
+const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
+  const { color } = useContext(ColorContext);
+
+  return (
+    <HeaderContainer>
+      <LogoContainer to="/">
+        <img
+          src={logo}
+          style={{ height: 45, borderRadius: 20 }}
+          alt="Logo Image"
+        />
+      </LogoContainer>
+      <OptionsContainer>
+        <OptionLink to="shop">SHOP</OptionLink>
+        <OptionLink to="contact">CONTACT</OptionLink>
+        {currentUser ? (
+          <OptionLink
+            as={"div"}
+            className="option"
+            onClick={() => auth.signOut()}
+          >
+            SIGN OUT
+          </OptionLink>
+        ) : (
+          <OptionLink to="signin">SIGN IN</OptionLink>
+        )}
+        <CartIcon />
+        <div style={{ cursor: "pointer", outline: "none", marginTop: 5 }}>
+          {colorNameMap[color]}
+        </div>
+        <ColorContextSelect />
+      </OptionsContainer>
+      {cartDropdownHidden ? null : (
+        <CartDropdown cartItems={null} dispatch={null} />
       )}
-      <CartIcon />
-    </OptionsContainer>
-    {cartDropdownHidden ? null : (
-      <CartDropdown cartItems={null} dispatch={null} />
-    )}
-  </HeaderContainer>
-);
+
+      {/*<Outlet />*/}
+    </HeaderContainer>
+  );
+};
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,

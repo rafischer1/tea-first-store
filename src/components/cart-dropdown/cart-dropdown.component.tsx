@@ -10,16 +10,13 @@ import { CartItem } from "../../redux/cart/cart.interface";
 import CartItemComponent from "../cart-item/cart-item.component";
 import { Dispatch } from "@reduxjs/toolkit";
 
-// TODO: invesitage dispatch call
+// TODO: investigate dispatch call
 type CartDropdownProps = {
   cartItems: CartItem[] | null;
   dispatch: Dispatch | null;
 };
 
-const CartDropdown: React.FC<CartDropdownProps> = ({
-  cartItems,
-  dispatch,
-}: CartDropdownProps) => {
+function CartDropdown({ cartItems, dispatch }: CartDropdownProps): JSX.Element {
   let nav: NavigateFunction = useNavigate();
 
   const goToCheckout = (): void => {
@@ -58,7 +55,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
