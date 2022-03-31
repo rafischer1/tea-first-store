@@ -6,9 +6,17 @@ export const ColorContext = createContext({
 });
 
 export const ColorProvider = ({ children }: any) => {
-  const [color, setColor] = useState("red");
+  let initialValue = "red";
+  const initialValueFromLocalStorage =
+    window.localStorage.getItem("color") ?? null;
+  if (initialValueFromLocalStorage)
+    initialValue = initialValueFromLocalStorage.split(":")[0];
+  const [color, setColor] = useState(initialValue);
   const value = { color, setColor };
-
+  window.localStorage.setItem(
+    "color",
+    `${value.color}: ${colorNameMap[value.color]}`
+  );
   return (
     // @ts-ignore
     <ColorContext.Provider value={value}>{children}</ColorContext.Provider>

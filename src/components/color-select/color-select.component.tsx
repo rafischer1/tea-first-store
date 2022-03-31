@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ColorContext, ColorName } from "../contexts/color.context";
+import { ColorContext, ColorName } from "../../contexts/color.context";
 
 const ColorContextSelect = () => {
   const { color, setColor } = useContext(ColorContext);

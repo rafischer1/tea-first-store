@@ -7,6 +7,7 @@ import logo from "../../assets/tea.png";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import ColorContextSelect from "../color-select/color-select.component";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import {
@@ -16,7 +17,6 @@ import {
   OptionsContainer,
 } from "./header.styles";
 import { ColorContext, colorNameMap } from "../../contexts/color.context";
-import ColorContextSelect from "../color-context-update.component";
 
 type HeaderProps = {
   cartDropdownHidden: boolean;
