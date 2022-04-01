@@ -47,6 +47,18 @@ to memoize it with a selector to save us running
 duplicate logic to get the same output.
 ```
 
+
+async fetches in useEffect
+```js
+useEffect(() => {
+  const genAsyncFunction = async () => {
+    const asyncRes = await myOtherAsyncFunction()
+    // do something with asyncRes (setX, contextUpdate, etc)
+  }
+  getAsyncFunction()
+},  [])
+```
+
 FIREBASE BACKWARDS COMPAT FOR IMPORT ERROR:
 
 ```go
