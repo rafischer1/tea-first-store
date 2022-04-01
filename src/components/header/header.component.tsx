@@ -1,14 +1,11 @@
 import React, { useContext } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import { useSelector } from "react-redux";
 // import { Outlet } from "react-router-dom";
 // @ts-ignore
 import logo from "../../assets/tea.png";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { selectCartHidden } from "../../redux/cart/cart.selectors";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
 import {
   HeaderContainer,
   LogoContainer,
@@ -18,13 +15,15 @@ import {
 import { ColorContext, colorNameMap } from "../../contexts/color.context";
 import ColorContextSelect from "../color-select/color-select.component";
 
-type HeaderProps = {
-  cartDropdownHidden: boolean;
-  currentUser: any;
-};
-
-const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
+const Header = () => {
   const { color } = useContext(ColorContext);
+
+  const currentUser = useSelector(
+    (state: { user: { currentUser: any } }) => state.user.currentUser
+  );
+  const cartDropdownHidden = useSelector(
+    (state: { cartDropdown: { hidden: boolean } }) => state.cartDropdown.hidden
+  );
 
   return (
     <HeaderContainer>
@@ -64,9 +63,11 @@ const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  cartDropdownHidden: selectCartHidden,
-});
+// const mapStateToProps = createStructuredSelector({
+//   currentUser: selectCurrentUser,
+//   cartDropdownHidden: selectCartHidden,
+// });
+//
+// export default connect(mapStateToProps)(Header);
 
-export default connect(mapStateToProps)(Header);
+export default Header;

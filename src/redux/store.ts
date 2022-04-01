@@ -13,4 +13,5 @@ export const persistor = persistStore(store);
 export default { store, persistor };
 
 export type AppDispatch = typeof store.dispatch;
+
 export const useAppDispatch = () => useDispatch<AppDispatch>();
