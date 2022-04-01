@@ -18,7 +18,6 @@ import { RootState } from "../../redux/root-reducer";
 
 const Header = () => {
   const { color } = useContext(ColorContext);
-
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
   const cartDropdownHidden = useSelector(
     (state: RootState) => state.cartDropdown.hidden
