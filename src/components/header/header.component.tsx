@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { Outlet } from "react-router-dom";
 // @ts-ignore
 import logo from "../../assets/tea.png";
-import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import {
@@ -15,13 +14,17 @@ import {
 import { ColorContext, colorNameMap } from "../../contexts/color.context";
 import ColorContextSelect from "../color-select/color-select.component";
 import { RootState } from "../../redux/root-reducer";
+import { signOutStart } from "../../redux/user/user.actions";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const { color } = useContext(ColorContext);
   const currentUser = useSelector((state: RootState) => state.user.currentUser);
   const cartDropdownHidden = useSelector(
     (state: RootState) => state.cartDropdown.hidden
   );
+
+  const signOutUser = () => dispatch(signOutStart());
 
   return (
     <HeaderContainer>
@@ -39,7 +42,7 @@ const Header = () => {
           <OptionLink
             as={"div"}
             className="option"
-            onClick={() => auth.signOut()}
+            onClick={() => signOutUser()}
           >
             SIGN OUT
           </OptionLink>

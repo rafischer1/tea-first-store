@@ -1,5 +1,5 @@
 import { UserActionTypes } from "./user.types";
-import { createAction } from "@reduxjs/toolkit";
+import { createAction, PrepareAction } from "@reduxjs/toolkit";
 
 export const setUserAction = (user: any) => ({
   type: UserActionTypes.SET_CURRENT_USER,
@@ -18,4 +18,15 @@ export const userSignInSuccess = (user: any) =>
   createAction(UserActionTypes.SIGN_IN_SUCCESS, user);
 
 export const userSignInFailed = (error: any) =>
-  createAction(UserActionTypes.SIGN_IN_FAILURE, error);
+  createAction(UserActionTypes.SIGN_IN_FAILED, error);
+
+export const signOutStart = () => ({ type: UserActionTypes.SIGN_OUT_START });
+
+export const signOutSuccess = () =>
+  createAction(UserActionTypes.SIGN_OUT_SUCCESS);
+
+export const signOutFailed = (error: string) =>
+  createAction(
+    UserActionTypes.SIGN_OUT_FAILED,
+    error as unknown as PrepareAction<string>
+  );

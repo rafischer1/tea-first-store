@@ -10,7 +10,6 @@ const persistConfig = {
   key: "root",
   storage, // localstorage
   whitelist: ["cartDropdown"],
-  blacklist: ["user"],
 };
 
 const rootReducer = combineReducers({
