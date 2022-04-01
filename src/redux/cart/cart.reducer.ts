@@ -1,8 +1,9 @@
 import { CartActionTypes } from "./cart.types";
 import { CartUtils } from "./cart.utils";
 import { AnyAction } from "redux";
+import { CartItem } from "./cart.interface";
 
-const INITIAL_STATE = { hidden: true, cartItems: [] };
+const INITIAL_STATE = { hidden: true, cartItems: [] as CartItem[] };
 
 const cartReducer = (state = INITIAL_STATE, action: AnyAction) => {
   switch (action.type) {

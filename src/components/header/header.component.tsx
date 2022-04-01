@@ -14,15 +14,14 @@ import {
 } from "./header.styles";
 import { ColorContext, colorNameMap } from "../../contexts/color.context";
 import ColorContextSelect from "../color-select/color-select.component";
+import { RootState } from "../../redux/root-reducer";
 
 const Header = () => {
   const { color } = useContext(ColorContext);
 
-  const currentUser = useSelector(
-    (state: { user: { currentUser: any } }) => state.user.currentUser
-  );
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
   const cartDropdownHidden = useSelector(
-    (state: { cartDropdown: { hidden: boolean } }) => state.cartDropdown.hidden
+    (state: RootState) => state.cartDropdown.hidden
   );
 
   return (
@@ -63,6 +62,7 @@ const Header = () => {
   );
 };
 
+// MapStateToProps replaced by useSelector hook
 // const mapStateToProps = createStructuredSelector({
 //   currentUser: selectCurrentUser,
 //   cartDropdownHidden: selectCartHidden,
