@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 // the user context value to access
 export const UserContext = createContext({

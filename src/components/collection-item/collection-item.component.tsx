@@ -8,7 +8,7 @@ import { AppDispatch } from "../../redux/store";
 
 type Props = {
   item: CartItem;
-  addItem: (item: CartItem) => { payload: CartItem; type: string };
+  addItem: any;
 };
 
 const CollectionItem = ({ item, addItem }: Props) => (
