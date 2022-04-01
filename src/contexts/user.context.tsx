@@ -1,4 +1,8 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useReducer } from "react";
+import userReducer, {
+  USER_REDUCER_INITIAL_STATE,
+} from "../redux/user/user.reducer";
+import { UserActionTypes } from "../redux/user/user.types";
 
 // the user context value to access
 export const UserContext = createContext({
@@ -8,7 +12,10 @@ export const UserContext = createContext({
 
 // the component wrapper for providing context
 export const UserProvider = ({ children }: any) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [state, dispatch] = useReducer(userReducer, USER_REDUCER_INITIAL_STATE);
+  const { currentUser } = state;
+  const setCurrentUser = (user: any | null) =>
+    dispatch({ type: UserActionTypes.SET_CURRENT_USER, payload: user });
   const value = { currentUser, setCurrentUser };
 
   // @ts-ignore
