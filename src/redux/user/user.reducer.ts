@@ -25,6 +25,7 @@ const userReducer = (
     case UserActionTypes.SIGN_OUT_SUCCESS:
       return {
         ...state,
+        currentUser: null,
         isLoading: false,
       };
     case UserActionTypes.SIGN_OUT_START:

@@ -1,7 +1,7 @@
 import { takeLatest, all, call, put } from "redux-saga/effects";
 // import { userSignInSuccess, userSignInFailed } from "./user.actions";
 import { UserActionTypes } from "./user.types";
-import { auth } from "../../firebase/firebase.utils";
+import { authSignOut } from "../../firebase/firebase.utils";
 import { signOutFailed, signOutSuccess } from "./user.actions";
 // import {
 //   createUserProfileDocument,
@@ -28,7 +28,7 @@ export function* emailSignIn() {
 
 export function* signOut() {
   try {
-    yield call(auth.signOut);
+    yield call(authSignOut);
     yield put(signOutSuccess());
   } catch (e) {
     yield put(signOutFailed("Sign Out Failed Error"));

@@ -22,8 +22,9 @@ export const userSignInFailed = (error: any) =>
 
 export const signOutStart = () => ({ type: UserActionTypes.SIGN_OUT_START });
 
-export const signOutSuccess = () =>
-  createAction(UserActionTypes.SIGN_OUT_SUCCESS);
+export const signOutSuccess = () => ({
+  type: UserActionTypes.SIGN_OUT_SUCCESS,
+});
 
 export const signOutFailed = (error: string) =>
   createAction(
