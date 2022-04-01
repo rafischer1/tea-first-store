@@ -10,6 +10,8 @@ import { UserProvider } from "./contexts/user.context";
 import { ColorProvider } from "./contexts/color.context";
 import { ProductsProvider } from "./contexts/products.context";
 
+// Persistor is persisting RootState in localstorage
+
 const container = document.getElementById("app");
 if (container) {
   const root = createRoot(container);

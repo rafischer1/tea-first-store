@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import { useDispatch, useSelector } from "react-redux";
 // import { Outlet } from "react-router-dom";
 // @ts-ignore
 import logo from "../../assets/tea.png";
-import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { selectCartHidden } from "../../redux/cart/cart.selectors";
-import { selectCurrentUser } from "../../redux/user/user.selectors";
 import {
   HeaderContainer,
   LogoContainer,
@@ -17,14 +13,18 @@ import {
 } from "./header.styles";
 import { ColorContext, colorNameMap } from "../../contexts/color.context";
 import ColorContextSelect from "../color-select/color-select.component";
+import { RootState } from "../../redux/root-reducer";
+import { signOutStart } from "../../redux/user/user.actions";
 
-type HeaderProps = {
-  cartDropdownHidden: boolean;
-  currentUser: any;
-};
-
-const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
+const Header = () => {
+  const dispatch = useDispatch();
   const { color } = useContext(ColorContext);
+  const currentUser = useSelector((state: RootState) => state.user.currentUser);
+  const cartDropdownHidden = useSelector(
+    (state: RootState) => state.cartDropdown.hidden
+  );
+
+  const signOutUser = () => dispatch(signOutStart());
 
   return (
     <HeaderContainer>
@@ -42,7 +42,7 @@ const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
           <OptionLink
             as={"div"}
             className="option"
-            onClick={() => auth.signOut()}
+            onClick={() => signOutUser()}
           >
             SIGN OUT
           </OptionLink>
@@ -64,9 +64,12 @@ const Header = ({ currentUser, cartDropdownHidden }: HeaderProps) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-  cartDropdownHidden: selectCartHidden,
-});
+// MapStateToProps replaced by useSelector hook
+// const mapStateToProps = createStructuredSelector({
+//   currentUser: selectCurrentUser,
+//   cartDropdownHidden: selectCartHidden,
+// });
+//
+// export default connect(mapStateToProps)(Header);
 
-export default connect(mapStateToProps)(Header);
+export default Header;
