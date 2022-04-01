@@ -8,8 +8,9 @@ import shopReducer from "./shop/shop.reducer";
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage, // localstorage
   whitelist: ["cartDropdown"],
+  blacklist: ["user"],
 };
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
 });
 
 // * represents the base reducer for all states of the app
+// persist for localStorage
 export default persistReducer(persistConfig, rootReducer);
 
 export type RootState = ReturnType<typeof rootReducer>;
