@@ -11,9 +11,9 @@ import { AppDispatch } from "../../redux/store";
 
 type Props = {
   item: CartItem;
-  clearItemFromCart: (item: CartItem) => { payload: CartItem; type: string };
-  removeItemFromCart: (item: CartItem) => { payload: CartItem; type: string };
-  addItemToCart: (item: CartItem) => { payload: CartItem; type: string };
+  clearItemFromCart: any;
+  removeItemFromCart: any;
+  addItemToCart: any;
 };
 
 const CheckoutItem = ({
