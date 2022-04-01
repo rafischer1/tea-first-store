@@ -10,13 +10,12 @@ import { CartItem } from "../../redux/cart/cart.interface";
 import CartItemComponent from "../cart-item/cart-item.component";
 import { Dispatch } from "@reduxjs/toolkit";
 
-// TODO: investigate dispatch call
 type CartDropdownProps = {
   cartItems: CartItem[] | null;
   dispatch: Dispatch | null;
 };
 
-function CartDropdown({ cartItems, dispatch }: CartDropdownProps): JSX.Element {
+function CartDropdown({ cartItems, dispatch }: CartDropdownProps) {
   let nav: NavigateFunction = useNavigate();
 
   const goToCheckout = (): void => {
