@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import "./App.scss";
 import { AppDispatch } from "./redux/store";
 
@@ -10,12 +10,17 @@ import { setUserAction } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
 
 import Header from "./components/header/header.component";
+import Spinner from "./components/spinner/spinner.component";
 
-import SignInAndSignUp from "./routes/sign-in/sign-in-and-sign-up.component";
-import Checkout from "./routes/checkout/checkout.component";
-import Collection from "./routes/collection/collection.component";
-import Home from "./routes/home/home.component";
-import Shop from "./routes/shop/shop.component";
+const SignInAndSignUp = lazy(
+  () => import("./routes/sign-in/sign-in-and-sign-up.component")
+);
+const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
+const Collection = lazy(
+  () => import("./routes/collection/collection.component")
+);
+const Shop = lazy(() => import("./routes/shop/shop.component"));
+const Home = lazy(() => import("./routes/home/home.component"));
 
 class App extends React.Component<
   { setCurrentUser: any; currentUser: any },
@@ -54,21 +59,23 @@ class App extends React.Component<
     return (
       <div className="App">
         <Header />
-        <Routes>
-          {/*<Route path="/" element={<Header />}>*/}
-          <Route index element={<Home />} />
-          <Route path="shop" element={<Shop />}>
-            <Route path=":collectionId" element={<Collection />} />
-          </Route>
+        <Suspense fallback={<Spinner />}>
+          <Routes>
+            {/*<Route path="/" element={<Header />}>*/}
+            <Route index element={<Home />} />
+            <Route path="shop" element={<Shop />}>
+              <Route path=":collectionId" element={<Collection />} />
+            </Route>
 
-          <Route path="checkout" element={<Checkout />} />
-          {this.props.currentUser ? (
-            <Route path="signin" element={<Home />} />
-          ) : (
-            <Route path="signin" element={<SignInAndSignUp />} />
-          )}
-          {/*</Route>*/}
-        </Routes>
+            <Route path="checkout" element={<Checkout />} />
+            {this.props.currentUser ? (
+              <Route path="signin" element={<Home />} />
+            ) : (
+              <Route path="signin" element={<SignInAndSignUp />} />
+            )}
+            {/*</Route>*/}
+          </Routes>
+        </Suspense>
       </div>
     );
   }
