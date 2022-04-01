@@ -11,6 +11,7 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 
 import Header from "./components/header/header.component";
 import Spinner from "./components/spinner/spinner.component";
+import ErrorBoundary from "./components/error-boundary/error-boundary.component";
 
 const SignInAndSignUp = lazy(
   () => import("./routes/sign-in/sign-in-and-sign-up.component")
@@ -59,23 +60,25 @@ class App extends React.Component<
     return (
       <div className="App">
         <Header />
-        <Suspense fallback={<Spinner />}>
-          <Routes>
-            {/*<Route path="/" element={<Header />}>*/}
-            <Route index element={<Home />} />
-            <Route path="shop" element={<Shop />}>
-              <Route path=":collectionId" element={<Collection />} />
-            </Route>
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Routes>
+              {/*<Route path="/" element={<Header />}>*/}
+              <Route index element={<Home />} />
+              <Route path="shop" element={<Shop />}>
+                <Route path=":collectionId" element={<Collection />} />
+              </Route>
 
-            <Route path="checkout" element={<Checkout />} />
-            {this.props.currentUser ? (
-              <Route path="signin" element={<Home />} />
-            ) : (
-              <Route path="signin" element={<SignInAndSignUp />} />
-            )}
-            {/*</Route>*/}
-          </Routes>
-        </Suspense>
+              <Route path="checkout" element={<Checkout />} />
+              {this.props.currentUser ? (
+                <Route path="signin" element={<Home />} />
+              ) : (
+                <Route path="signin" element={<SignInAndSignUp />} />
+              )}
+              {/*</Route>*/}
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </div>
     );
   }
