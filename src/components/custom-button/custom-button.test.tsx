@@ -10,7 +10,8 @@ describe("<CustomButton />", () => {
       </CustomButton>
     );
     expect(customButton).toBeTruthy();
-    expect(customButton.container.children).toHaveTextContent("Test Button");
-    // expect(customButton.container.props()).toContainEqual("inverted: true");
+    expect(
+      customButton.container.getElementsByTagName("button")[0]
+    ).toContainHTML("<button class='sc-bdvvtL dleHu'>Test Button</button>");
   });
 });
