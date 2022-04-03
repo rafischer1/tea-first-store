@@ -11,7 +11,7 @@ type CollectionsProps = {
 };
 
 const CollectionsOverview = ({ collections }: CollectionsProps) => (
-  <div className="collections-overview">
+  <div className="collections-overview" role="props">
     {collections.map((collection: ShopCollection) => (
       <PreviewCollection
         key={collection.id}

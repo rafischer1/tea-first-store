@@ -12,12 +12,13 @@ function ColorContextSelect() {
     "green",
     "purple",
   ];
-  const updateRedContext = (event: any) =>
+  const updateColorContext = (event: any) =>
     setColor(event.target.value as ColorName);
 
   return (
     <select
-      onChange={updateRedContext}
+      role="select"
+      onChange={updateColorContext}
       style={{ marginLeft: 3, marginTop: 3 }}
       defaultValue={color}
     >

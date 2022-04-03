@@ -1,20 +1,38 @@
 import React from "react";
-import Enzyme, { render } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import CartItemComponent from "./cart-item.component";
 import mocks from "../../mocks/mock-types";
 import { Provider } from "react-redux";
-import { store } from "../../redux/store";
-Enzyme.configure({ adapter: new Adapter() });
+import { render } from "@testing-library/react";
+import { mockStore } from "../../mocks/mock-store";
 
 describe("CartItem Component", () => {
-  it("Renders item prop", () => {
-    const wrapper = render(
-      <Provider store={store}>
+  let wrapper: any;
+  beforeEach(() => {
+    wrapper = render(
+      <Provider store={mockStore}>
         <CartItemComponent item={mocks.mockCartItems[1]} />
       </Provider>
     );
-    console.log("KBDFKAJSND::", wrapper.find("span.name"));
-    // expect(wrapper.find("span.name")["0"].data());
+  });
+  it("Renders CartItemComponent", () => {
+    expect(wrapper).toBeTruthy();
+  });
+
+  it("span.name displays correct CartItem name from input", () => {
+    expect(
+      wrapper.container.getElementsByClassName("name").item(0)?.innerHTML
+    ).toEqual("Mock Item 2");
+    expect(
+      wrapper.container.getElementsByClassName("name").item(0)?.innerHTML
+    ).not.toEqual("Mock Item 1");
+  });
+
+  it(".price displays correct CartItem price and quantity from input", () => {
+    expect(
+      wrapper.container.getElementsByClassName("price").item(0)?.innerHTML
+    ).not.toEqual("2 x $4");
+    expect(
+      wrapper.container.getElementsByClassName("price").item(0)?.innerHTML
+    ).toEqual("2 x $2");
   });
 });

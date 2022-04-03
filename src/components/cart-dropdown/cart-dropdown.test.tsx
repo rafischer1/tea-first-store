@@ -1,28 +1,29 @@
 import CartDropdown from "./cart-dropdown.component";
 import mocks from "../../mocks/mock-types";
 import React from "react";
-import Enzyme, { shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import { Provider } from "react-redux";
-import { store } from "../../redux/store";
-Enzyme.configure({ adapter: new Adapter() });
+import { render, RenderResult } from "@testing-library/react";
+import { mockStore } from "../../mocks/mock-store";
+import { BrowserRouter } from "react-router-dom";
 
-describe("CartDropdown Component", () => {
-  let wrapper: Enzyme.ShallowWrapper<
-    any,
-    Readonly<{}>,
-    React.Component<{}, {}, any>
+describe("CartDropdown component", () => {
+  let wrapper: RenderResult<
+    typeof import("@testing-library/dom/types/queries"),
+    HTMLElement,
+    HTMLElement
   >;
 
   beforeEach(() => {
-    wrapper = shallow(
-      <Provider store={store}>
-        <CartDropdown cartItems={mocks.mockCartItems} dispatch={null} />
+    wrapper = render(
+      <Provider store={mockStore}>
+        <BrowserRouter>
+          <CartDropdown cartItems={mocks.mockCartItems} dispatch={null} />
+        </BrowserRouter>
       </Provider>
     );
   });
 
-  it("Renders cartItems props", () => {
-    expect(wrapper.find(CartDropdown).prop("cartItems")).toHaveLength(3);
+  it("should render CartDropdown component", () => {
+    expect(wrapper).toBeTruthy();
   });
 });
