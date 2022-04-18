@@ -1,5 +1,6 @@
 import { CartActionTypes } from "./cart.types";
 import { CartItem } from "./cart.interface";
+import { ActionCreatorWithPayload } from "@reduxjs/toolkit";
 
 export const toggleCartDropdownAction = (): { type: string } => ({
   type: CartActionTypes.TOGGLE_CART_DROPDOWN,
@@ -29,3 +30,6 @@ export const removeItemFromCart = (
   type: CartActionTypes.REMOVE_ITEM,
   payload: item,
 });
+
+export type ToggleCartDropdownActive =
+  ActionCreatorWithPayload<CartActionTypes.TOGGLE_CART_DROPDOWN>;
