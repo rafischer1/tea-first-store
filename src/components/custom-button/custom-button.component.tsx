@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { CustomButtonContainer } from "./custom-button.styles";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   onClick?: any;
 };
 
-const CustomButton = ({
+const CustomButton: FC<Props> = ({
   children,
   isGoogleSignIn,
   inverted,

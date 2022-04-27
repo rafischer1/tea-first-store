@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 export const ColorContext = createContext({
   color: "red",
-  setColor: (color: ColorName) => color,
+  setColor: (color: ColorName): ColorName => color,
 });
 
 export const ColorProvider = ({ children }: any) => {
@@ -18,9 +18,12 @@ export const ColorProvider = ({ children }: any) => {
     "color",
     `${value.color}: ${colorNameMap[value.color]}`
   );
+
   return (
     // @ts-ignore
-    <ColorContext.Provider value={value}>{children}</ColorContext.Provider>
+    <ColorContext.Provider value={{ color, setColor }}>
+      {children}
+    </ColorContext.Provider>
   );
 };
 
