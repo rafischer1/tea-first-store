@@ -75,7 +75,7 @@ const Header = () => {
 //   currentUser: selectCurrentUser,
 //   cartDropdownHidden: selectCartHidden,
 // });
-//
+
 // export default connect(mapStateToProps)(Header);
 
 export default Header;
