@@ -4,11 +4,13 @@ import userReducer, {
 } from "../redux/user/user.reducer";
 import { UserActionTypes } from "../redux/user/user.types";
 
+interface ContextState {
+  currentUser: null | any;
+  setCurrentUser: () => null | any;
+}
+
 // the user context value to access
-export const UserContext = createContext({
-  currentUser: null,
-  setCurrentUser: () => null,
-});
+export const UserContext = createContext({} as ContextState);
 
 // the component wrapper for providing context
 export const UserProvider = ({ children }: any) => {
