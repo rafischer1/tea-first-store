@@ -23,7 +23,7 @@ class SignUp extends React.Component<{}, State> {
     };
   }
 
-  handleChange = (ev: any) => {
+  handleChange = (ev: { target: any }) => {
     const { value, name } = ev.target;
     // @ts-ignore
     this.setState({ [name]: value });
