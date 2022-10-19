@@ -23,7 +23,7 @@ class SignUp extends React.Component<{}, State> {
     };
   }
 
-  handleChange = (ev: any) => {
+  handleChange = (ev: { target: any }) => {
     const { value, name } = ev.target;
     // @ts-ignore
     this.setState({ [name]: value });
@@ -37,7 +37,6 @@ class SignUp extends React.Component<{}, State> {
       try {
         const user = await auth.createUserWithEmailAndPassword(email, password);
         if (user) {
-          // @ts-ignore
           await createUserProfileDocument(user, { displayName });
         }
       } catch (error: any) {
