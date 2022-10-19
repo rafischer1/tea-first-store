@@ -55,7 +55,6 @@ class App extends React.Component<
 
   // <Routes> register all the routes for the application
   // <Route> the relative path where path matches and render said component
-
   render() {
     return (
       <div className="App">
