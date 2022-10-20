@@ -30,7 +30,7 @@ const connector = connect(mapStateToProps, null);
 
 export default connector(CollectionsOverview);
 
-// ALTERNATELY BY USING CONTEXT vs REDUX
+// * ALTERNATE SOLUTION USING CONTEXT vs REDUX
 // const CollectionsOverview = () => (
 //   const {products} = useContext(ProductsContext)
 //   <div className="collections-overview">
