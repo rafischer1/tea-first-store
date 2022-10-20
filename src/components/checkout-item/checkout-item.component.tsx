@@ -51,5 +51,4 @@ const mapDispatchToProps = (dispatch: AppDispatch) => ({
   addItemToCart: (item: CartItem) => dispatch(addItemToCart(item)),
 });
 
-// @ts-ignore
 export default connect(null, mapDispatchToProps)(CheckoutItem);
