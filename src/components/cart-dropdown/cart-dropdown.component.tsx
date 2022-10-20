@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { NavigateFunction, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createStructuredSelector } from "reselect";
 import CustomButton from "../custom-button/custom-button.component";
 import "./cart-dropdown.styles.scss";
@@ -16,7 +16,7 @@ type CartDropdownProps = {
 };
 
 function CartDropdown({ cartItems, dispatch }: CartDropdownProps) {
-  let nav: NavigateFunction = useNavigate();
+  let nav = useNavigate();
 
   const goToCheckout = (): void => {
     nav("/checkout");
