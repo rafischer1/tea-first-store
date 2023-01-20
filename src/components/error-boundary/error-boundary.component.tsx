@@ -24,7 +24,7 @@ class ErrorBoundary extends React.Component<any, any> {
         <table>
           <thead>
             <tr>
-              <th>Error Boundary Triggered</th>
+              <th>* Error Boundary Triggered *</th>
             </tr>
           </thead>
           <tbody>
