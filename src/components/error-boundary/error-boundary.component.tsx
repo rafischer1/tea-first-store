@@ -19,24 +19,22 @@ class ErrorBoundary extends React.Component<any, any> {
   }
 
   render() {
-    if (this.state.hasErrored) {
-      return (
-        <table>
-          <thead>
-            <tr>
-              <th>* Error Boundary Triggered *</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>{this.state.error}</td>
-            </tr>
-          </tbody>
-        </table>
-      );
-    } else {
-      return this.props.children;
-    }
+    return this.state.hasErrored ? (
+      <table>
+        <thead>
+          <tr>
+            <th>* Error Boundary Triggered *</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{this.state.error}</td>
+          </tr>
+        </tbody>
+      </table>
+    ) : (
+      this.props.children
+    );
   }
 }
 
