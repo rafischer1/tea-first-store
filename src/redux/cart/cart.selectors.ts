@@ -21,10 +21,10 @@ export const selectCartItemsCount = createSelector(
     )
 );
 
-export const selectCartHidden = createSelector(
-  [selectCart],
-  (cartDropdown: Cart) => cartDropdown.hidden
-);
+// export const selectCartHidden = createSelector(
+//   [selectCart],
+//   (cartDropdown: Cart) => cartDropdown.hidden
+// );
 
 // @ts-ignore
 export const selectCartTotal = createSelector(
