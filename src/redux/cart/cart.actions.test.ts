@@ -26,8 +26,9 @@ describe("Cart Actions", () => {
 
   it("should handle REMOVE_ITEM action", () => {
     const removeItemFromCartRes = removeItemFromCart(mocks.mockCartItems[0]);
+    const removeItem = CartActionTypes.REMOVE_ITEM
     expect(removeItemFromCartRes).toEqual({
-      type: CartActionTypes.REMOVE_ITEM,
+      type: removeItem,
       payload: mocks.mockCartItems[0],
     });
   });
