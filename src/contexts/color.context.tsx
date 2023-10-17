@@ -36,6 +36,7 @@ export type ColorName =
   | "green"
   | "purple"
   | "teal"
+  | "pink"
   | "brown";
 
 export const colorNameMap: { [key: string]: string } = {
@@ -48,4 +49,5 @@ export const colorNameMap: { [key: string]: string } = {
   purple: "💜",
   teal: "👗",
   brown: "📦",
+  pink: "🦩"
 };
