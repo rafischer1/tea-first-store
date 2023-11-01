@@ -11,6 +11,7 @@ const colorsList: ColorName[] = [
   "purple",
   "teal",
   "brown",
+  "pink",
 ];
 
 function ColorContextSelect() {
