@@ -22,6 +22,7 @@ export const colorNameMap: { [key: string]: string } = {
   brown: "📦",
   pink: "🦩",
 };
+
 export const colorsList: ColorName[] = [
   "red",
   "blue",
