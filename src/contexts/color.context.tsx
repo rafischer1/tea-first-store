@@ -1,10 +1,9 @@
 import React, { createContext, useState } from "react";
-
+import { ColorName, colorNameMap } from "../shared/colorContextDef";
 export const ColorContext = createContext({
   color: "red",
   setColor: (color: ColorName): ColorName => color,
 });
-
 export const ColorProvider = ({ children }: any) => {
   let initialValue = "red";
   const initialValueFromLocalStorage =
@@ -25,29 +24,4 @@ export const ColorProvider = ({ children }: any) => {
       {children}
     </ColorContext.Provider>
   );
-};
-
-export type ColorName =
-  | "red"
-  | "blue"
-  | "white"
-  | "black"
-  | "orange"
-  | "green"
-  | "purple"
-  | "teal"
-  | "pink"
-  | "brown";
-
-export const colorNameMap: { [key: string]: string } = {
-  red: "🔴",
-  blue: "🔵",
-  black: "⚫️",
-  white: "⚪️",
-  orange: "🔶",
-  green: "❇️",
-  purple: "💜",
-  teal: "👗",
-  brown: "📦",
-  pink: "🦩",
 };

@@ -1,18 +1,6 @@
 import React, { useContext } from "react";
-import { ColorContext, ColorName } from "../../contexts/color.context";
-
-const colorsList: ColorName[] = [
-  "red",
-  "blue",
-  "white",
-  "black",
-  "orange",
-  "green",
-  "purple",
-  "teal",
-  "brown",
-  "pink",
-];
+import { ColorContext } from "../../contexts/color.context";
+import { ColorName, colorsList } from "../../shared/colorContextDef";
 
 function ColorContextSelect() {
   const { color, setColor } = useContext(ColorContext);

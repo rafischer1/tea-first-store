@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import "./spinner.styles.scss";
-import { ColorContext, colorNameMap } from "../../contexts/color.context";
+import { ColorContext } from "../../contexts/color.context";
+import { colorNameMap } from "../../shared/colorContextDef";
 
 const Spinner = () => {
   const { color } = useContext(ColorContext);

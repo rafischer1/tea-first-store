@@ -1,7 +1,8 @@
 import React from "react";
-import { ColorContext, colorNameMap } from "./color.context";
+import { ColorContext } from "./color.context";
 import { render, screen } from "@testing-library/react";
 import { ReactChild, ReactFragment, ReactPortal } from "react";
+import { colorNameMap } from "../shared/colorContextDef";
 
 describe("Color Context", () => {
   const customRender = (

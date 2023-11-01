@@ -11,10 +11,11 @@ import {
   OptionLink,
   OptionsContainer,
 } from "./header.styles";
-import { ColorContext, colorNameMap } from "../../contexts/color.context";
+import { ColorContext } from "../../contexts/color.context";
 import ColorContextSelect from "../color-select/color-select.component";
 import { RootState } from "../../redux/root-reducer";
 import { signOutStart } from "../../redux/user/user.actions";
+import { colorNameMap } from "../../shared/colorContextDef";
 
 const Header = () => {
   // redux action dispatch
