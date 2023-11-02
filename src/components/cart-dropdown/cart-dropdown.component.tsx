@@ -60,6 +60,7 @@ const mapStateToProps = createStructuredSelector({
   cartItems: selectCartItems,
 });
 
+// * Connect wraps the connect method to "connect" to the store
 const connector = connect(mapStateToProps, null);
 
 // * passes dispatch into component as a prop without a second param here
