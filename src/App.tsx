@@ -12,6 +12,7 @@ import { selectCurrentUser } from "./redux/user/user.selectors";
 import Header from "./components/header/header.component";
 import Spinner from "./components/spinner/spinner.component";
 import ErrorBoundary from "./components/error-boundary/error-boundary.component";
+import ApiTest from "./routes/ApiTest/ApiTest.compnent";
 
 const SignInAndSignUp = lazy(
   () => import("./routes/sign-in/sign-in-and-sign-up.component")
@@ -64,6 +65,7 @@ class App extends React.Component<
             <Routes>
               {/*<Route path="/" element={<Header />}>*/}
               <Route index element={<Home />} />
+              <Route path="apiTest" element={<ApiTest />} />
               <Route path="shop" element={<Shop />}>
                 <Route path=":collectionId" element={<Collection />} />
               </Route>
